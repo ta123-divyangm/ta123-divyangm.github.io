@@ -40075,7 +40075,7 @@ F.oF.prototype={
 aG:function(){return new F.Bk(C.m)}}
 F.Bk.prototype={
 P:function(a,b){var s=null
-return new M.pn(M.Va(s,new T.uC(C.ag,C.nv,C.nw,C.mO,s,C.p5,s,H.c([new Q.vi(Q.a6j(H.c(["My life in FLUTTER","My life in REACT","My life in NODE","My life in ANGULAR"],t.i),C.ei,A.pT(s,s,s,s,s,s,s,s,"Horizon",s,s,40,s,s,s,s,!0,s,s,s,s,s,s),C.rv),C.jW,!1,!1,new F.Rx(),s,s,s,!0,!0,3,s)],t.fQ),s),s,new S.aY(1/0,1/0,1/0,1/0),new S.fm(s,new X.uS(new L.n1("/image/istockphoto-1058045964-612x612.jpg"),C.mo),s,s,s,s,C.ah),s,s,s),s)}}
+return new M.pn(M.Va(s,new T.uC(C.ag,C.nv,C.nw,C.mO,s,C.p5,s,H.c([new Q.vi(Q.a6j(H.c(["My life in FLUTTER","My life in REACT","My life in NODE","My life in ANGULAR"],t.i),C.ei,A.pT(s,s,s,s,s,s,s,s,"Horizon",s,s,40,s,s,s,s,!0,s,s,s,s,s,s),C.rv),C.jW,!1,!1,new F.Rx(),s,s,s,!0,!0,3,s)],t.fQ),s),s,new S.aY(1/0,1/0,1/0,1/0),new S.fm(s,new X.uS(new L.n1("image/istockphoto-1058045964-612x612.jpg"),C.mo),s,s,s,s,C.ah),s,s,s),s)}}
 F.Rx.prototype={
 $0:function(){P.mK("Tap Event")},
 $S:2}

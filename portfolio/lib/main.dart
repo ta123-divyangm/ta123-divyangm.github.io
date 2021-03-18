@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('/image/istockphoto-1058045964-612x612.jpg'),
+              image: AssetImage('image/istockphoto-1058045964-612x612.jpg'),
               fit: BoxFit.cover),
         ),
         // Image.asset('/image/istockphoto-1058045964-612x612.jpg')
