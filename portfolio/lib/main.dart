@@ -1,7 +1,10 @@
-// import 'package:animated_text_kit/animated_text_kit.dart';
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
@@ -16,9 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(
-          child: ExampleParallax(),
-        ),
+        body: ExampleParallax(),
       ),
     );
   }
@@ -31,17 +32,248 @@ class ExampleParallax extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Column(
-      children: [
-        for (final location in locations)
-          LocationListItem(
-            imageUrl: location.imageUrl,
-            name: location.name,
-            country: location.place,
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      child: Stack(
+        children: [
+          Container(
+            margin: EdgeInsets.fromLTRB(
+                MediaQuery.of(context).size.width < 600 ? 50 : 60, 30, 40, 0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(bottom: 20),
+                      height:
+                          MediaQuery.of(context).size.width < 600 ? 80 : 150,
+                      width: MediaQuery.of(context).size.width < 600 ? 80 : 150,
+                      child: Stack(
+                        alignment: Alignment.bottomCenter,
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        children: [
+                          Container(
+                            height: MediaQuery.of(context).size.width < 600
+                                ? 50
+                                : 120,
+                            width: MediaQuery.of(context).size.width < 600
+                                ? 50
+                                : 120,
+                            decoration: ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100),
+                                side: BorderSide(
+                                    color: Colors.white,
+                                    width:
+                                        MediaQuery.of(context).size.width < 600
+                                            ? 3
+                                            : 4),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                18,
+                                0,
+                                18,
+                                MediaQuery.of(context).size.width < 600
+                                    ? 2
+                                    : 5),
+                            child: ClipRRect(
+                              child: Image.asset('image/profile_blank.png'),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width < 600 ? 0 : 20,
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(bottom: 10),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Divyang Mistry',
+                            style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 600
+                                        ? 20
+                                        : 40,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: 1.5),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.width < 600
+                                ? 5
+                                : 10,
+                          ),
+                          Text(
+                            'Software Developer @ Techavidus',
+                            style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width < 600
+                                        ? 10
+                                        : 14,
+                                fontWeight: FontWeight.w100,
+                                letterSpacing:
+                                    MediaQuery.of(context).size.width < 600
+                                        ? 1
+                                        : 2),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  child: MediaQuery.of(context).size.width < 900
+                      ? Container(
+                          child: Text(""),
+                        )
+                      : Container(child: DevelopingAppsAnimatedText()),
+                  // Text(" ")
+                ),
+              ],
+            ),
           ),
-      ],
-    ));
+          Padding(
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(icon: Icon(Icons.mail), onPressed: () => {}),
+                  IconButton(
+                      icon: FaIcon(FontAwesomeIcons.github),
+                      onPressed: () => {}),
+                  IconButton(
+                      icon: FaIcon(FontAwesomeIcons.instagram),
+                      onPressed: () => {}),
+                  IconButton(
+                      icon: FaIcon(FontAwesomeIcons.facebook),
+                      onPressed: () => {}),
+                ],
+              ),
+            ),
+          ),
+          Stack(
+            children: [
+              Card(
+                color: Colors.white,
+                elevation: 10,
+                margin: EdgeInsets.fromLTRB(
+                    60,
+                    MediaQuery.of(context).size.width < 600 ? 100 : 170,
+                    40,
+                    30),
+                semanticContainer: true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Container(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        for (final location in locations)
+                          LocationListItem(
+                            imageUrl: location.imageUrl,
+                            name: location.name,
+                            country: location.place,
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              // Positioned.fill(
+              //   child: DecoratedBox(
+              //     decoration: BoxDecoration(
+              //       gradient: LinearGradient(
+              //         colors: [
+              //           Colors.transparent,
+              //           Colors.black.withOpacity(0.7)
+              //         ],
+              //         begin: Alignment.topCenter,
+              //         end: Alignment.bottomCenter,
+              //         stops: [0.7, 1],
+              //       ),
+              //     ),
+              //   ),
+              // ),
+            ],
+          ),
+          Positioned(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: AnimatedTextKit(
+                animatedTexts: [
+                  FadeAnimatedText(
+                      '\u00a9 Divyang Mistry - Made with ❤️ in Flutter.',
+                      textStyle: TextStyle(fontSize: 12),
+                      duration: Duration(seconds: 10))
+                ],
+                isRepeatingAnimation: true,
+                repeatForever: true,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DevelopingAppsAnimatedText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Developing Apps in :',
+            style: TextStyle(fontSize: 30),
+          ),
+          AnimatedTextKit(
+            animatedTexts: [
+              TypewriterAnimatedText(
+                'Flutter',
+                cursor: '|',
+                speed: Duration(milliseconds: 100),
+                textStyle: TextStyle(fontSize: 20),
+              ),
+              TypewriterAnimatedText(
+                'ReactJS',
+                cursor: '|',
+                speed: Duration(milliseconds: 100),
+                textStyle: TextStyle(fontSize: 20),
+              ),
+              TypewriterAnimatedText(
+                'Angular',
+                cursor: '|',
+                speed: Duration(milliseconds: 100),
+                textStyle: TextStyle(fontSize: 20),
+              ),
+            ],
+            isRepeatingAnimation: true,
+            repeatForever: true,
+          )
+        ],
+      ),
+    );
   }
 }
 
@@ -63,13 +295,13 @@ class LocationListItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
       child: AspectRatio(
-        aspectRatio: 16 / 7.5,
+        aspectRatio: 16 / 6,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: Stack(
             children: [
               _buildParallaxBackground(context),
-              // _buildGradient(),
+              _buildGradient(),
               _buildTitleAndSubtitle(context),
             ],
           ),
@@ -86,7 +318,7 @@ class LocationListItem extends StatelessWidget {
         backgroundImageKey: _backgroundImageKey,
       ),
       children: [
-        Image.network(
+        Image.asset(
           imageUrl,
           key: _backgroundImageKey,
           fit: BoxFit.cover,
@@ -111,31 +343,19 @@ class LocationListItem extends StatelessWidget {
   }
 
   Widget _buildTitleAndSubtitle(BuildContext context) {
-    return Center(
+    return Container(
       child: Column(
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // FadeAnimatedTextKit(
-          //     repeatForever: true,
-          //     onTap: () {
-          //       print("Tap Event");
-          //     },
-          //     text: [
-          //       "My life in FLUTTER",
-          //       "My life in REACT",
-          //       "My life in NODE",
-          //       "My life in ANGULAR"
-          //     ],
-          //     textStyle: TextStyle(fontSize: 40.0, fontFamily: "Horizon"),
-          //   ),
           Text(
             name,
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+              fontSize: MediaQuery.of(context).size.width < 600 ? 40 : 300,
+              fontWeight: FontWeight.w200,
+              letterSpacing: -40,
             ),
           ),
           Text(
@@ -340,38 +560,28 @@ const urlPrefix =
     'https://flutter.dev/docs/cookbook/img-files/effects/parallax';
 const locations = [
   Location(
-    name: 'Mount Rushmore',
-    place: 'U.S.A',
-    imageUrl: '$urlPrefix/01-mount-rushmore.jpg',
+    name: 'Objective',
+    place: 'i want to reach',
+    imageUrl: 'image/pexels-skitterphoto-15812.jpg',
   ),
   Location(
-    name: 'Singapore',
-    place: 'China',
-    imageUrl: '$urlPrefix/02-singapore.jpg',
+    name: 'Education',
+    place: 'the world want\'s me to know',
+    imageUrl: 'image/pexels-pixabay-159711.jpg',
   ),
   Location(
-    name: 'Machu Picchu',
-    place: 'Peru',
-    imageUrl: '$urlPrefix/03-machu-picchu.jpg',
+    name: 'Experience',
+    place: 'that i got from this world ',
+    imageUrl: 'image/pexels-kevin-ku-577585.jpg',
   ),
   Location(
-    name: 'Vitznau',
-    place: 'Switzerland',
-    imageUrl: '$urlPrefix/04-vitznau.jpg',
+    name: 'Achievements',
+    place: 'some small acknowledgement that i made till date',
+    imageUrl: 'image/pexels-anna-shvets-5218003.jpg',
   ),
   Location(
-    name: 'Bali',
-    place: 'Indonesia',
-    imageUrl: '$urlPrefix/05-bali.jpg',
-  ),
-  Location(
-    name: 'Mexico City',
-    place: 'Mexico',
-    imageUrl: '$urlPrefix/06-mexico-city.jpg',
-  ),
-  Location(
-    name: 'Cairo',
-    place: 'Egypt',
-    imageUrl: '$urlPrefix/07-cairo.jpg',
+    name: 'Socializing',
+    place: '... for when i am not around you',
+    imageUrl: 'image/pexels-mike-1178683.jpg',
   ),
 ];
